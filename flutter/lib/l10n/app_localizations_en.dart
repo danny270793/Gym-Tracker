@@ -715,9 +715,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsConfirmNewPasswordLabel => 'Confirm new password';
 
   @override
-  String get settingsDataSection => 'Data';
-
-  @override
   String get settingsLanguage => 'Language';
 
   @override
@@ -728,13 +725,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsLanguageSystem => 'System default';
-
-  @override
-  String get settingsLocalData => 'Saved in your account';
-
-  @override
-  String get settingsLocalDataSubtitle =>
-      'Plan, exercises, photos and workouts are stored in Supabase. The last data loaded stays readable offline; signing out removes it from this device.';
 
   @override
   String get settingsNewEmailLabel => 'New email';
@@ -928,7 +918,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get loadTypeWeightHint =>
-      'Sets are logged in lb or kg and count toward weekly volume.';
+      'Sets show lb and kg side by side and count toward weekly volume.';
 
   @override
   String get loadTypeDiscsHint =>
@@ -948,4 +938,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get syncingLocalData => 'Uploading your data to your account…';
+
+  @override
+  String get dashboardMuscleReps => 'Reps per main muscle this week';
+
+  @override
+  String get dashboardMuscleRepsHint =>
+      'Completed reps of the exercises that train each muscle directly.';
+
+  @override
+  String get openExercise => 'Open exercise';
 }

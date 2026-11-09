@@ -7,7 +7,8 @@ import '../features/exercises/domain/entities/exercise_entity.dart';
 import '../features/exercises/domain/entities/load_type.dart';
 
 /// Formats and parses a set's load for one exercise: pounds shown in the
-/// user's lb/kg for weight exercises, a plain disc count for stack exercises.
+/// user's lb/kg setting for weight exercises, a plain disc count for stack
+/// exercises. (Weight inputs show lb and kg side by side: `LbKgFields`.)
 class LoadDisplay {
   const LoadDisplay._(this.type, this.unit, this._discs);
 

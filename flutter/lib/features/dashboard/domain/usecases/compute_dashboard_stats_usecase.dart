@@ -52,6 +52,10 @@ class ComputeDashboardStatsUsecase {
         workouts.where((w) => !w.date.isBefore(thisWeekStart)),
         byId,
       ),
+      muscleRepsThisWeek: _muscleReps(
+        workouts.where((w) => !w.date.isBefore(thisWeekStart)),
+        byId,
+      ),
       personalRecords: personalRecords(workouts),
       trends: _trends(workouts, now),
       averageDuration: _averageDuration(workouts, now),
@@ -89,6 +93,26 @@ class ComputeDashboardStatsUsecase {
       }
     }
     return sets.entries.toList()..sort((a, b) => b.value.compareTo(a.value));
+  }
+
+  /// Completed reps per main muscle; secondary muscles are not counted.
+  static List<MapEntry<MuscleGroup, int>> _muscleReps(
+    Iterable<WorkoutEntity> workouts,
+    Map<String, ExerciseEntity> byId,
+  ) {
+    final reps = <MuscleGroup, int>{};
+    for (final w in workouts) {
+      for (final entry in w.exercises) {
+        final ex = byId[entry.exerciseId];
+        if (ex == null) continue;
+        final n = entry.completedSets.fold(0, (sum, s) => sum + s.reps);
+        if (n == 0) continue;
+        for (final m in ex.primaryMuscles) {
+          reps[m] = (reps[m] ?? 0) + n;
+        }
+      }
+    }
+    return reps.entries.toList()..sort((a, b) => b.value.compareTo(a.value));
   }
 
   /// Best e1RM per exercise, most recent record first.

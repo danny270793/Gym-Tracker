@@ -718,9 +718,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get settingsConfirmNewPasswordLabel => 'Confirmar contraseña';
 
   @override
-  String get settingsDataSection => 'Datos';
-
-  @override
   String get settingsLanguage => 'Idioma';
 
   @override
@@ -731,13 +728,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get settingsLanguageSystem => 'Predeterminado del sistema';
-
-  @override
-  String get settingsLocalData => 'Guardado en tu cuenta';
-
-  @override
-  String get settingsLocalDataSubtitle =>
-      'El plan, los ejercicios, las fotos y los entrenamientos se guardan en Supabase. Los últimos datos cargados se pueden ver sin conexión; al cerrar sesión se borran de este dispositivo.';
 
   @override
   String get settingsNewEmailLabel => 'Correo nuevo';
@@ -931,7 +921,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get loadTypeWeightHint =>
-      'Las series se registran en lb o kg y cuentan en el volumen semanal.';
+      'Las series muestran lb y kg lado a lado y cuentan en el volumen semanal.';
 
   @override
   String get loadTypeDiscsHint =>
@@ -951,4 +941,15 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get syncingLocalData => 'Subiendo tus datos a tu cuenta…';
+
+  @override
+  String get dashboardMuscleReps =>
+      'Repeticiones por músculo principal esta semana';
+
+  @override
+  String get dashboardMuscleRepsHint =>
+      'Repeticiones completadas de los ejercicios que trabajan cada músculo directamente.';
+
+  @override
+  String get openExercise => 'Abrir ejercicio';
 }

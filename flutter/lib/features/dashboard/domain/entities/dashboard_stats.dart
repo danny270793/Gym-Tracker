@@ -87,6 +87,9 @@ class DashboardStats extends Equatable {
   /// Sets per muscle this week: primary counts 1, secondary 0.5. Highest first.
   final List<MapEntry<MuscleGroup, double>> muscleSetsThisWeek;
 
+  /// Completed reps this week per main (direct) muscle. Highest first.
+  final List<MapEntry<MuscleGroup, int>> muscleRepsThisWeek;
+
   /// Most recent first.
   final List<PersonalRecord> personalRecords;
 
@@ -104,6 +107,7 @@ class DashboardStats extends Equatable {
     required this.weekStreak,
     required this.totalWorkouts,
     required this.muscleSetsThisWeek,
+    required this.muscleRepsThisWeek,
     required this.personalRecords,
     required this.trends,
     this.averageDuration,
@@ -118,6 +122,7 @@ class DashboardStats extends Equatable {
     weekStreak,
     totalWorkouts,
     muscleSetsThisWeek,
+    muscleRepsThisWeek,
     personalRecords,
     trends,
     averageDuration,
