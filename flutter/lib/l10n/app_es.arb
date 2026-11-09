@@ -238,9 +238,9 @@
   "settingsThemeDark": "Oscuro",
   "settingsThemeLight": "Claro",
   "settingsThemeSystem": "Predeterminado del sistema",
-  "settingsWeightUnit": "Unidad de peso",
-  "settingsWeightUnitKg": "Kilogramos (kg)",
-  "settingsWeightUnitLb": "Libras (lb)",
+  "settingsWeightUnit": "Unidad para totales",
+  "settingsWeightUnitKg": "kg",
+  "settingsWeightUnitLb": "lb",
   "signIn": "Iniciar sesión",
   "signOut": "Cerrar sesión",
   "startWorkout": "Empezar",
@@ -265,10 +265,13 @@
   "loadTypeLabel": "Carga",
   "loadTypeWeight": "Peso",
   "loadTypeDiscs": "Discos",
-  "loadTypeWeightHint": "Las series se registran en lb o kg y cuentan en el volumen semanal.",
+  "loadTypeWeightHint": "Las series se registran en esta unidad y cuentan en el volumen semanal.",
   "loadTypeDiscsHint": "Para poleas y máquinas: registra cuántos discos (placas). No cuenta en el volumen en lb/kg.",
   "dashboardVolumeHint": "El volumen solo cuenta ejercicios con peso; los de discos se siguen en su propio progreso.",
   "saveFailed": "No se pudo guardar. Revisa tu conexión e inténtalo de nuevo.",
   "offlineBanner": "Sin conexión: mostrando tus últimos datos sincronizados (solo lectura)",
-  "syncingLocalData": "Subiendo tus datos a tu cuenta…"
+  "syncingLocalData": "Subiendo tus datos a tu cuenta…",
+  "dashboardMuscleReps": "Repeticiones por músculo principal esta semana",
+  "dashboardMuscleRepsHint": "Repeticiones completadas de los ejercicios que trabajan cada músculo directamente.",
+  "openExercise": "Abrir ejercicio"
 }
