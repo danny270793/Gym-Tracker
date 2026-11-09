@@ -1,4 +1,4 @@
-package io.github.danny270793.gym_tracker
+package io.github.danny270793.gymtracker
 
 import io.flutter.embedding.android.FlutterFragmentActivity
 
