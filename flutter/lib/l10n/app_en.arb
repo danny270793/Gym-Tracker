@@ -1,0 +1,419 @@
+{
+  "@@locale": "en",
+  "addExercise": "Add exercise",
+  "addSet": "Set",
+  "appTitle": "Gym Tracker",
+  "autoSaved": "Changes are saved automatically",
+  "bestE1rm": "Best est. 1RM",
+  "bestVolume": "Best session volume",
+  "biometricLockBody": "Use Face ID or fingerprint to continue.",
+  "biometricLockTitle": "App locked",
+  "biometricLockUnlockButton": "Unlock",
+  "camera": "Camera",
+  "cancel": "Cancel",
+  "changeDate": "Change date",
+  "completeAll": "Mark all done",
+  "continueWorkout": "Continue",
+  "dashboardAvgDuration": "Avg. duration",
+  "dashboardE1rm": "Est. 1RM {value}",
+  "@dashboardE1rm": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboardEmptyBody": "Log your first workout and your progress will show up here.",
+  "dashboardEmptyTitle": "No data yet",
+  "dashboardLast30Days": "last 30 days",
+  "dashboardMuscleSets": "Sets per muscle this week",
+  "dashboardMuscleSetsHint": "Direct sets count 1, secondary muscles 0.5. Around 10–20 weekly sets per muscle is a common target.",
+  "dashboardNew": "New",
+  "dashboardNoPreviousWeek": "nothing last week",
+  "dashboardNoSetsThisWeek": "No completed sets this week yet.",
+  "dashboardNoTrends": "Log weighted sets to see trends.",
+  "dashboardPersonalRecords": "Personal records",
+  "dashboardPlannedDays": "done / planned days",
+  "dashboardReps": "Reps",
+  "dashboardSets": "Sets",
+  "dashboardStreak": "Streak",
+  "dashboardStreakWeeks": "{count, plural, =1{1 week} other{{count} weeks}}",
+  "@dashboardStreakWeeks": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dashboardThisWeek": "This week",
+  "dashboardTotalWorkouts": "{count, plural, =1{1 workout total} other{{count} workouts total}}",
+  "@dashboardTotalWorkouts": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dashboardTrends": "Strength trends",
+  "dashboardTrendsHint": "Best estimated 1RM in the last 4 weeks vs the 4 weeks before.",
+  "dashboardVolume": "Volume ({unit})",
+  "@dashboardVolume": {
+    "placeholders": {
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboardVsLastWeek": "{delta} vs last week",
+  "@dashboardVsLastWeek": {
+    "placeholders": {
+      "delta": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboardWeeklyReps": "Weekly reps",
+  "dashboardWeeklyVolume": "Weekly volume ({unit})",
+  "@dashboardWeeklyVolume": {
+    "placeholders": {
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboardWorkouts": "Workouts",
+  "delete": "Delete",
+  "deleteExerciseMessage": "\"{name}\" and its photos will be deleted. Past workouts keep their sets.",
+  "@deleteExerciseMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteExerciseTitle": "Delete exercise?",
+  "deleteRoutineMessage": "\"{name}\" will be removed from your weekly plan. Past workouts are kept.",
+  "@deleteRoutineMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteRoutineTitle": "Delete routine?",
+  "deleteWorkoutMessage": "\"{name}\" and all its sets will be deleted.",
+  "@deleteWorkoutMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteWorkoutTitle": "Delete workout?",
+  "deletedExercise": "Deleted exercise",
+  "edit": "Edit",
+  "editExercise": "Edit exercise",
+  "editRoutine": "Edit routine",
+  "email": "Email",
+  "emptyWorkoutHint": "Start empty and add exercises as you go",
+  "emptyWorkoutTitle": "Workout",
+  "equipment": "Equipment",
+  "equipmentBand": "Band",
+  "equipmentBarbell": "Barbell",
+  "equipmentBodyweight": "Bodyweight",
+  "equipmentCable": "Cable",
+  "equipmentDumbbell": "Dumbbell",
+  "equipmentKettlebell": "Kettlebell",
+  "equipmentMachine": "Machine",
+  "equipmentOther": "Other",
+  "equipmentSmithMachine": "Smith machine",
+  "exerciseInUseMessage": "Remove it from these routines first: {routines}.",
+  "@exerciseInUseMessage": {
+    "placeholders": {
+      "routines": {
+        "type": "String"
+      }
+    }
+  },
+  "exerciseInUseTitle": "Exercise in use",
+  "exerciseNameHint": "e.g. Incline dumbbell press",
+  "exerciseNameLabel": "Name",
+  "exerciseNotFound": "Exercise not found",
+  "exerciseNotesHint": "Setup, cues, seat height…",
+  "exerciseNotesLabel": "How to do it",
+  "exerciseRemoved": "Exercise removed",
+  "exercisesEmptyBody": "Create the exercises you do, with the muscles they train and photos to remember the form. Then use them in your routines.",
+  "exercisesEmptyTitle": "No exercises yet",
+  "exercisesInRoutine": "Exercises",
+  "fieldRequired": "Required",
+  "finish": "Finish",
+  "finishAsIs": "Finish as is",
+  "finishWorkout": "Finish workout",
+  "finishWorkoutPendingSets": "{count, plural, =1{1 set is not checked. Unchecked sets don't count in your stats.} other{{count} sets are not checked. Unchecked sets don't count in your stats.}}",
+  "@finishWorkoutPendingSets": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "finishWorkoutTitle": "Finish workout?",
+  "finished": "Finished",
+  "gallery": "Gallery",
+  "goToPlan": "Set up plan",
+  "goToWorkouts": "Go to workouts",
+  "heaviestSet": "Heaviest set",
+  "history": "History",
+  "imageImportFailed": "Could not add the image.",
+  "inProgress": "In progress",
+  "lastSession": "Last session",
+  "lastTime": "Last time: {sets}",
+  "@lastTime": {
+    "placeholders": {
+      "sets": {
+        "type": "String"
+      }
+    }
+  },
+  "loadError": "Could not load your data",
+  "metricE1rm": "1RM",
+  "metricTopWeight": "Top",
+  "metricVolume": "Volume",
+  "moveDown": "Move down",
+  "moveUp": "Move up",
+  "muscleAbs": "Abs",
+  "muscleAdductors": "Adductors",
+  "muscleBiceps": "Biceps",
+  "muscleCalves": "Calves",
+  "muscleChest": "Chest",
+  "muscleForearms": "Forearms",
+  "muscleGlutes": "Glutes",
+  "muscleHamstrings": "Hamstrings",
+  "muscleLats": "Lats",
+  "muscleLowerBack": "Lower back",
+  "muscleObliques": "Obliques",
+  "muscleQuads": "Quads",
+  "muscleShoulders": "Shoulders",
+  "muscleTraps": "Traps",
+  "muscleTriceps": "Triceps",
+  "muscleUpperBack": "Upper back",
+  "navDashboard": "Dashboard",
+  "navExercises": "Exercises",
+  "navPlan": "Plan",
+  "navWorkouts": "Workouts",
+  "newExercise": "New exercise",
+  "newRoutine": "New routine",
+  "noPlanYet": "No plan yet",
+  "noPlanYetHint": "Set up your weekly plan to get today's workout here.",
+  "noResults": "No results",
+  "notInPlan": "Added today (not in plan)",
+  "notUsedInRoutines": "Not used in any routine yet.",
+  "notes": "Notes",
+  "ok": "OK",
+  "password": "Password",
+  "pickExerciseTitle": "Add exercise",
+  "plannedTarget": "Plan: {sets}×{reps}{weight}",
+  "@plannedTarget": {
+    "placeholders": {
+      "sets": {
+        "type": "int"
+      },
+      "reps": {
+        "type": "int"
+      },
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "primaryMuscles": "Muscles trained directly",
+  "primaryMusclesHint": "Each set counts as one set for these muscles.",
+  "primaryMusclesRequired": "Pick at least one muscle trained directly.",
+  "progressEmptyBody": "Complete sets of this exercise to see its progress.",
+  "progressEmptyTitle": "No sessions yet",
+  "progressSinceFirst": "Since first session",
+  "referenceImages": "Reference images",
+  "removeExercise": "Remove exercise",
+  "removeImage": "Remove image",
+  "removeSet": "Set",
+  "rename": "Rename",
+  "reopenWorkout": "Mark as in progress",
+  "reps": "Reps",
+  "repsCount": "{count, plural, =1{1 rep} other{{count} reps}}",
+  "@repsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "restDay": "Rest day",
+  "restDayHint": "Nothing planned for today. You can still start a workout.",
+  "retry": "Retry",
+  "routineNoExercises": "No exercises",
+  "routineNoExercisesHint": "Add the exercises for this day, with sets and reps.",
+  "routineSummary": "{exercises, plural, =1{1 exercise} other{{exercises} exercises}} · {sets, plural, =1{1 set} other{{sets} sets}}",
+  "@routineSummary": {
+    "placeholders": {
+      "exercises": {
+        "type": "int"
+      },
+      "sets": {
+        "type": "int"
+      }
+    }
+  },
+  "routineTitleHint": "e.g. Push",
+  "routineTitleLabel": "Title",
+  "routines": "Routines",
+  "routinesEmpty": "No routines yet. Create one (e.g. Push) and assign it to days.",
+  "save": "Save",
+  "searchExercises": "Search exercises",
+  "secondaryMuscles": "Secondary muscles",
+  "secondaryMusclesHint": "Muscles that help. Each set counts as half a set.",
+  "sessions": "Sessions",
+  "sessionsCount": "{count, plural, =1{1 session} other{{count} sessions}}",
+  "@sessionsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "sessionsTitle": "Sessions",
+  "setShort": "Set",
+  "sets": "Sets",
+  "setsCount": "{count, plural, =1{1 set} other{{count} sets}}",
+  "@setsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "setsDone": "{done}/{total} sets",
+  "@setsDone": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "settings": "Settings",
+  "settingsAboutApp": "About",
+  "settingsAboutBulletDashboard": "Dashboard with weekly volume and reps, sets per muscle, strength trends and personal records.",
+  "settingsAboutBulletExercises": "Reusable exercises with the muscles they train, equipment, notes and reference photos.",
+  "settingsAboutBulletLog": "Daily log that starts from the plan: drop exercises, change sets, reps and weight, or add new ones.",
+  "settingsAboutBulletPlan": "Weekly plan: assign a routine (push, pull, legs…) to each day, with sets and reps for every exercise.",
+  "settingsAboutDataBody": "Sign-in and your data use Supabase: your plan, exercises, workouts and reference photos are stored in your account and available on any device where you sign in. A read-only copy of the last data loaded is kept on this device for when you're offline.",
+  "settingsAboutDataHeading": "Your data",
+  "settingsAboutDeveloperGithub": "GitHub",
+  "settingsAboutDeveloperHeading": "Developer",
+  "settingsAboutDeveloperLinkedin": "LinkedIn",
+  "settingsAboutDeveloperWebsite": "Website",
+  "settingsAboutDeveloperYoutube": "YouTube",
+  "settingsAboutFeaturesHeading": "What you can do",
+  "settingsAboutSection": "About",
+  "settingsAboutTagline": "Plan your week, log every set, see your progress.",
+  "settingsAboutVersionLabel": "Version",
+  "settingsAppearance": "Appearance",
+  "settingsBiometricAuthReason": "Confirm to enable biometric unlock.",
+  "settingsBiometricResumeReason": "Authenticate to continue.",
+  "settingsBiometricUnavailable": "Biometric unlock is not available on this device.",
+  "settingsBiometricUnlockSubtitle": "Use biometrics to unlock the app.",
+  "settingsBiometricUnlockTitle": "Face ID & fingerprint",
+  "settingsChangeEmail": "Change email",
+  "settingsChangeEmailDialogTitle": "Change email",
+  "settingsChangeEmailInvalid": "Enter a valid email address.",
+  "settingsChangeEmailSameAsCurrent": "That is already your email.",
+  "settingsChangeEmailSubmit": "Update",
+  "settingsChangeEmailSuccess": "Check your new email to confirm the change.",
+  "settingsChangePassword": "Change password",
+  "settingsChangePasswordDialogTitle": "Change password",
+  "settingsChangePasswordSubmit": "Update password",
+  "settingsChangePasswordSubtitle": "Updates the password you use to sign in.",
+  "settingsChangePasswordSuccess": "Your password was updated.",
+  "settingsConfirmNewPasswordLabel": "Confirm new password",
+  "settingsDataSection": "Data",
+  "settingsLanguage": "Language",
+  "settingsLanguageEnglish": "English",
+  "settingsLanguageSpanish": "Spanish",
+  "settingsLanguageSystem": "System default",
+  "settingsLocalData": "Saved in your account",
+  "settingsLocalDataSubtitle": "Plan, exercises, photos and workouts are stored in Supabase. The last data loaded stays readable offline; signing out removes it from this device.",
+  "settingsNewEmailLabel": "New email",
+  "settingsNewPasswordLabel": "New password",
+  "settingsPasswordTooShort": "Use at least 6 characters.",
+  "settingsPasswordsDoNotMatch": "Passwords do not match.",
+  "settingsPrivacyDataBody": "Authentication is provided by Supabase. Your email and credentials are processed by Supabase; this app does not store your password.",
+  "settingsPrivacyDataTitle": "Account",
+  "settingsPrivacyInfraBody": "Your weekly plan, exercises, workout logs and reference photos are stored in Supabase, tied to your account and protected so only you can read them. A copy of the last data loaded is kept on this device to show it offline, and is deleted when you sign out. Security and backups depend on that service. Use a strong password.",
+  "settingsPrivacyInfraTitle": "What we store today — and later",
+  "settingsPrivacyNoticeBody": "This text is a simple placeholder, not legal advice. Before production or an app store release, publish a privacy policy that matches your jurisdiction, your organization, and how you actually process data.",
+  "settingsPrivacyNoticeTitle": "Before you ship",
+  "settingsPrivacyPolicy": "Privacy policy",
+  "settingsPrivacySharingBody": "We do not sell your personal information or use your training data to target ads. Apart from the sign-in service, this app does not send your data to anyone.",
+  "settingsPrivacySharingTitle": "Sharing and ads",
+  "settingsPrivacyTagline": "Your account and training data are stored in Supabase.",
+  "settingsProfileSection": "Profile",
+  "settingsSecuritySection": "Security",
+  "settingsTermsAcceptanceBody": "By accessing or using Gym Tracker, you agree to these terms. If you do not agree, do not use the app. Sign-in and your training data are handled by Supabase.",
+  "settingsTermsAcceptanceTitle": "Acceptance",
+  "settingsTermsDisclaimerBody": "Gym Tracker is a tool for organizing your own training. Nothing in the app is medical, fitness or nutrition advice. Consult a professional before starting a program, and train at your own risk.",
+  "settingsTermsDisclaimerTitle": "Not medical advice",
+  "settingsTermsLiabilityBody": "To the fullest extent permitted by law, the authors and contributors are not liable for any indirect, incidental, or consequential damages, or for losses or decisions you make based on the app. The app is provided as-is without warranties of any kind.",
+  "settingsTermsLiabilityTitle": "Limitation of liability",
+  "settingsTermsNoticeBody": "These terms may be updated from time to time. If you continue to use the app after changes are posted, that indicates your acceptance of the updated terms. This text is a simple placeholder, not legal advice. Before production or an app store release, publish terms that match your jurisdiction, your organization, and your service.",
+  "settingsTermsNoticeTitle": "Changes and before you ship",
+  "settingsTermsOfUse": "Terms of use",
+  "settingsTermsResponsibilitiesBody": "You are responsible for protecting your account, credentials and devices.",
+  "settingsTermsResponsibilitiesTitle": "Your responsibilities",
+  "settingsTermsTagline": "Rules for using this app.",
+  "settingsTheme": "Theme",
+  "settingsThemeDark": "Dark",
+  "settingsThemeLight": "Light",
+  "settingsThemeSystem": "System default",
+  "settingsWeightUnit": "Weight unit",
+  "settingsWeightUnitKg": "Kilograms (kg)",
+  "settingsWeightUnitLb": "Pounds (lb)",
+  "signIn": "Sign in",
+  "signOut": "Sign out",
+  "startWorkout": "Start workout",
+  "todayDone": "Done for today. Nice work!",
+  "todayLabel": "Today · {day}",
+  "@todayLabel": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      }
+    }
+  },
+  "undo": "Undo",
+  "unexpectedError": "An unexpected error occurred",
+  "usedInRoutines": "Used in routines",
+  "view": "View",
+  "viewProgress": "View progress",
+  "weeklyPlan": "Weekly plan",
+  "weeklyPlanHint": "Tap a day to choose its routine. The same routine can be used on several days.",
+  "workoutEmptyBody": "Add the exercises you are doing today.",
+  "workoutEmptyTitle": "No exercises",
+  "workoutInProgress": "Workout in progress",
+  "workoutNotFound": "Workout not found",
+  "workoutSaved": "Workout saved",
+  "workoutTitleLabel": "Workout title",
+  "workoutsEmpty": "No workouts logged yet.",
+  "yourStats": "Your stats",
+  "discsShort": "discs",
+  "loadTypeLabel": "Load",
+  "loadTypeWeight": "Weight",
+  "loadTypeDiscs": "Discs",
+  "loadTypeWeightHint": "Sets are logged in lb or kg and count toward weekly volume.",
+  "loadTypeDiscsHint": "For cable and machine stacks: log how many discs (plates). Not counted in lb/kg volume.",
+  "dashboardVolumeHint": "Volume counts weight exercises only; disc exercises are tracked in their own progress.",
+  "saveFailed": "Couldn't save. Check your connection and try again.",
+  "offlineBanner": "Offline: showing your last synced data (read-only)",
+  "syncingLocalData": "Uploading your data to your account…"
+}
