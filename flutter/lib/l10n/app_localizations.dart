@@ -1529,19 +1529,19 @@ abstract class AppLocalizations {
   /// No description provided for @settingsWeightUnit.
   ///
   /// In en, this message translates to:
-  /// **'Weight unit'**
+  /// **'Unit for totals'**
   String get settingsWeightUnit;
 
   /// No description provided for @settingsWeightUnitKg.
   ///
   /// In en, this message translates to:
-  /// **'Kilograms (kg)'**
+  /// **'kg'**
   String get settingsWeightUnitKg;
 
   /// No description provided for @settingsWeightUnitLb.
   ///
   /// In en, this message translates to:
-  /// **'Pounds (lb)'**
+  /// **'lb'**
   String get settingsWeightUnitLb;
 
   /// No description provided for @signIn.
@@ -1691,7 +1691,7 @@ abstract class AppLocalizations {
   /// No description provided for @loadTypeWeightHint.
   ///
   /// In en, this message translates to:
-  /// **'Sets are logged in lb or kg and count toward weekly volume.'**
+  /// **'Sets are logged in this unit and count toward weekly volume.'**
   String get loadTypeWeightHint;
 
   /// No description provided for @loadTypeDiscsHint.
@@ -1723,6 +1723,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Uploading your data to your account…'**
   String get syncingLocalData;
+
+  /// No description provided for @dashboardMuscleReps.
+  ///
+  /// In en, this message translates to:
+  /// **'Reps per main muscle this week'**
+  String get dashboardMuscleReps;
+
+  /// No description provided for @dashboardMuscleRepsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed reps of the exercises that train each muscle directly.'**
+  String get dashboardMuscleRepsHint;
+
+  /// No description provided for @openExercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Open exercise'**
+  String get openExercise;
 }
 
 class _AppLocalizationsDelegate
