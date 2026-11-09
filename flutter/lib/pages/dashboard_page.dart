@@ -200,6 +200,26 @@ class _DashboardBody extends StatelessWidget {
           formatValue: (v) => formatCompact(context, v),
         ),
         SectionHeader(
+          l10n.dashboardMuscleReps,
+          padding: const EdgeInsets.fromLTRB(0, 24, 0, 4),
+        ),
+        Text(
+          l10n.dashboardMuscleRepsHint,
+          style: theme.textTheme.bodySmall?.copyWith(
+            color: scheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 12),
+        if (stats.muscleRepsThisWeek.isEmpty)
+          Text(l10n.dashboardNoSetsThisWeek)
+        else
+          _MuscleBars(
+            entries: [
+              for (final e in stats.muscleRepsThisWeek)
+                MapEntry(e.key, e.value.toDouble()),
+            ],
+          ),
+        SectionHeader(
           l10n.dashboardMuscleSets,
           padding: const EdgeInsets.fromLTRB(0, 24, 0, 4),
         ),
