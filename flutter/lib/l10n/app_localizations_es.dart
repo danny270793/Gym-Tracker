@@ -846,13 +846,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get settingsThemeSystem => 'Predeterminado del sistema';
 
   @override
-  String get settingsWeightUnit => 'Unidad de peso';
+  String get settingsWeightUnit => 'Unidad para totales';
 
   @override
-  String get settingsWeightUnitKg => 'Kilogramos (kg)';
+  String get settingsWeightUnitKg => 'kg';
 
   @override
-  String get settingsWeightUnitLb => 'Libras (lb)';
+  String get settingsWeightUnitLb => 'lb';
 
   @override
   String get signIn => 'Iniciar sesión';
@@ -931,7 +931,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get loadTypeWeightHint =>
-      'Las series se registran en lb o kg y cuentan en el volumen semanal.';
+      'Las series se registran en esta unidad y cuentan en el volumen semanal.';
 
   @override
   String get loadTypeDiscsHint =>
@@ -951,4 +951,15 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get syncingLocalData => 'Subiendo tus datos a tu cuenta…';
+
+  @override
+  String get dashboardMuscleReps =>
+      'Repeticiones por músculo principal esta semana';
+
+  @override
+  String get dashboardMuscleRepsHint =>
+      'Repeticiones completadas de los ejercicios que trabajan cada músculo directamente.';
+
+  @override
+  String get openExercise => 'Abrir ejercicio';
 }
