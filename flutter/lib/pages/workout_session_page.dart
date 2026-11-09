@@ -466,6 +466,13 @@ class _ExerciseCard extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
+                        if (exercise != null)
+                          Text(
+                            equipmentLabel(l10n, exercise!.equipment),
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: scheme.onSurfaceVariant,
+                            ),
+                          ),
                         Text(
                           planned == null
                               ? l10n.notInPlan
