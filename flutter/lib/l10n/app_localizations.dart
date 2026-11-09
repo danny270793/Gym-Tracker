@@ -1292,12 +1292,6 @@ abstract class AppLocalizations {
   /// **'Confirm new password'**
   String get settingsConfirmNewPasswordLabel;
 
-  /// No description provided for @settingsDataSection.
-  ///
-  /// In en, this message translates to:
-  /// **'Data'**
-  String get settingsDataSection;
-
   /// No description provided for @settingsLanguage.
   ///
   /// In en, this message translates to:
@@ -1321,18 +1315,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'System default'**
   String get settingsLanguageSystem;
-
-  /// No description provided for @settingsLocalData.
-  ///
-  /// In en, this message translates to:
-  /// **'Saved in your account'**
-  String get settingsLocalData;
-
-  /// No description provided for @settingsLocalDataSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Plan, exercises, photos and workouts are stored in Supabase. The last data loaded stays readable offline; signing out removes it from this device.'**
-  String get settingsLocalDataSubtitle;
 
   /// No description provided for @settingsNewEmailLabel.
   ///
@@ -1529,19 +1511,19 @@ abstract class AppLocalizations {
   /// No description provided for @settingsWeightUnit.
   ///
   /// In en, this message translates to:
-  /// **'Unit for totals'**
+  /// **'Weight unit'**
   String get settingsWeightUnit;
 
   /// No description provided for @settingsWeightUnitKg.
   ///
   /// In en, this message translates to:
-  /// **'kg'**
+  /// **'Kilograms (kg)'**
   String get settingsWeightUnitKg;
 
   /// No description provided for @settingsWeightUnitLb.
   ///
   /// In en, this message translates to:
-  /// **'lb'**
+  /// **'Pounds (lb)'**
   String get settingsWeightUnitLb;
 
   /// No description provided for @signIn.
@@ -1691,7 +1673,7 @@ abstract class AppLocalizations {
   /// No description provided for @loadTypeWeightHint.
   ///
   /// In en, this message translates to:
-  /// **'Sets are logged in this unit and count toward weekly volume.'**
+  /// **'Sets show lb and kg side by side and count toward weekly volume.'**
   String get loadTypeWeightHint;
 
   /// No description provided for @loadTypeDiscsHint.
