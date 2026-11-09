@@ -715,9 +715,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsConfirmNewPasswordLabel => 'Confirm new password';
 
   @override
-  String get settingsDataSection => 'Data';
-
-  @override
   String get settingsLanguage => 'Language';
 
   @override
@@ -728,13 +725,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsLanguageSystem => 'System default';
-
-  @override
-  String get settingsLocalData => 'Saved in your account';
-
-  @override
-  String get settingsLocalDataSubtitle =>
-      'Plan, exercises, photos and workouts are stored in Supabase. The last data loaded stays readable offline; signing out removes it from this device.';
 
   @override
   String get settingsNewEmailLabel => 'New email';
@@ -843,13 +833,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsThemeSystem => 'System default';
 
   @override
-  String get settingsWeightUnit => 'Unit for totals';
+  String get settingsWeightUnit => 'Weight unit';
 
   @override
-  String get settingsWeightUnitKg => 'kg';
+  String get settingsWeightUnitKg => 'Kilograms (kg)';
 
   @override
-  String get settingsWeightUnitLb => 'lb';
+  String get settingsWeightUnitLb => 'Pounds (lb)';
 
   @override
   String get signIn => 'Sign in';
@@ -928,7 +918,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get loadTypeWeightHint =>
-      'Sets are logged in this unit and count toward weekly volume.';
+      'Sets show lb and kg side by side and count toward weekly volume.';
 
   @override
   String get loadTypeDiscsHint =>
