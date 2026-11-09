@@ -18,6 +18,7 @@ import '../widgets/confirm_dialog.dart';
 import '../widgets/exercise_picker_sheet.dart';
 import '../widgets/exercise_thumbnail.dart';
 import '../widgets/gym_labels.dart';
+import '../widgets/lb_kg_fields.dart';
 import '../widgets/load_display.dart';
 import '../features/exercises/domain/entities/load_type.dart';
 import '../widgets/section_header.dart';
@@ -536,14 +537,19 @@ class _ExerciseCard extends StatelessWidget {
                       style: theme.textTheme.labelSmall,
                     ),
                   ),
-                  Expanded(
-                    child: Text(
-                      load.symbol,
-                      textAlign: TextAlign.center,
-                      style: theme.textTheme.labelSmall,
+                  for (final unit
+                      in load.isDiscs
+                          ? [load.symbol]
+                          : [WeightUnit.lb.symbol, WeightUnit.kg.symbol]) ...[
+                    Expanded(
+                      child: Text(
+                        unit,
+                        textAlign: TextAlign.center,
+                        style: theme.textTheme.labelSmall,
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 8),
+                    const SizedBox(width: 8),
+                  ],
                   Expanded(
                     child: Text(
                       l10n.reps,
@@ -650,23 +656,33 @@ class _SetRow extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(
-            child: TextFormField(
-              initialValue: set.load > 0 ? load.format(set.load) : '',
-              textAlign: TextAlign.center,
-              keyboardType: const TextInputType.numberWithOptions(
-                decimal: true,
+          if (load.isDiscs)
+            Expanded(
+              child: TextFormField(
+                initialValue: set.load > 0 ? load.format(set.load) : '',
+                textAlign: TextAlign.center,
+                keyboardType: const TextInputType.numberWithOptions(
+                  decimal: true,
+                ),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'[0-9.,]')),
+                ],
+                decoration: _decoration(scheme).copyWith(hintText: '0'),
+                onChanged: (v) {
+                  final parsed = double.tryParse(v.replaceAll(',', '.')) ?? 0;
+                  onChanged(set.copyWith(load: load.fromInput(parsed)));
+                },
               ),
-              inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp(r'[0-9.,]')),
-              ],
-              decoration: _decoration(scheme).copyWith(hintText: '0'),
-              onChanged: (v) {
-                final parsed = double.tryParse(v.replaceAll(',', '.')) ?? 0;
-                onChanged(set.copyWith(load: load.fromInput(parsed)));
-              },
+            )
+          else
+            Expanded(
+              flex: 2,
+              child: LbKgFields(
+                valueLb: set.load,
+                decoration: (_) => _decoration(scheme).copyWith(hintText: '0'),
+                onChanged: (lb) => onChanged(set.copyWith(load: lb ?? 0)),
+              ),
             ),
-          ),
           const SizedBox(width: 8),
           Expanded(
             child: TextFormField(
