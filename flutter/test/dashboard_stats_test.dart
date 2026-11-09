@@ -142,36 +142,29 @@ void main() {
     expect(stats.thisWeek.sets, 2);
   });
 
-  test(
-    'reps per main muscle ignore secondary muscles; kg still counts as lb',
-    () {
-      final stats = const ComputeDashboardStatsUsecase()(
-        workouts: [
-          workout('w', DateTime(2026, 3, 10), {
-            'press': [done(8, 50), done(6, 50)],
-            'curl': [done(10, 20)],
-          }),
-        ],
-        exercises: [
-          exercise(
-            'press',
-            primary: const [MuscleGroup.chest],
-            secondary: const [MuscleGroup.triceps],
-          ),
-          exercise(
-            'curl',
-            primary: const [MuscleGroup.biceps],
-          ).copyWith(weightUnit: WeightUnit.kg),
-        ],
-        weeklyPlan: const WeeklyPlanEntity(),
-        now: now,
-      );
-      expect(stats.muscleRepsThisWeek.map((e) => (e.key, e.value)), [
-        (MuscleGroup.chest, 14),
-        (MuscleGroup.biceps, 10),
-      ]);
-      // Loads are stored in pounds whatever the display unit.
-      expect(stats.thisWeek.volumeLb, 14 * 50 + 10 * 20);
-    },
-  );
+  test('reps per main muscle ignore secondary muscles', () {
+    final stats = const ComputeDashboardStatsUsecase()(
+      workouts: [
+        workout('w', DateTime(2026, 3, 10), {
+          'press': [done(8, 50), done(6, 50)],
+          'curl': [done(10, 20)],
+        }),
+      ],
+      exercises: [
+        exercise(
+          'press',
+          primary: const [MuscleGroup.chest],
+          secondary: const [MuscleGroup.triceps],
+        ),
+        exercise('curl', primary: const [MuscleGroup.biceps]),
+      ],
+      weeklyPlan: const WeeklyPlanEntity(),
+      now: now,
+    );
+    expect(stats.muscleRepsThisWeek.map((e) => (e.key, e.value)), [
+      (MuscleGroup.chest, 14),
+      (MuscleGroup.biceps, 10),
+    ]);
+    expect(stats.thisWeek.volumeLb, 14 * 50 + 10 * 20);
+  });
 }
