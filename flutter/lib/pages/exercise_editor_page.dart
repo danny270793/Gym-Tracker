@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import '../core/logger/app_logger.dart';
 import '../features/exercises/domain/entities/equipment.dart';
 import '../features/exercises/domain/entities/exercise_entity.dart';
+import '../core/units/app_weight_unit_controller.dart';
 import '../features/exercises/domain/entities/load_type.dart';
 import '../features/exercises/domain/entities/muscle_group.dart';
 import '../features/exercises/presentation/cubit/exercises_cubit.dart';
@@ -32,6 +33,7 @@ class _ExerciseEditorPageState extends State<ExerciseEditorPage> {
   late final TextEditingController _notes;
   late Equipment _equipment;
   late LoadType _loadType;
+  late WeightUnit _weightUnit;
 
   /// Until the user picks a load type, it follows the equipment.
   late bool _loadTypeTouched;
@@ -57,6 +59,7 @@ class _ExerciseEditorPageState extends State<ExerciseEditorPage> {
     _notes = TextEditingController(text: _existing?.notes ?? '');
     _equipment = _existing?.equipment ?? Equipment.dumbbell;
     _loadType = _existing?.loadType ?? LoadType.defaultFor(_equipment);
+    _weightUnit = _existing?.weightUnit ?? WeightUnit.lb;
     _loadTypeTouched = _existing != null;
     _primary = [...?_existing?.primaryMuscles];
     _secondary = [...?_existing?.secondaryMuscles];
@@ -123,6 +126,7 @@ class _ExerciseEditorPageState extends State<ExerciseEditorPage> {
       secondaryMuscles: _secondary,
       equipment: _equipment,
       loadType: _loadType,
+      weightUnit: _weightUnit,
       notes: _notes.text,
       imagePaths: _images,
     );
@@ -216,23 +220,43 @@ class _ExerciseEditorPageState extends State<ExerciseEditorPage> {
               style: Theme.of(context).textTheme.labelLarge,
             ),
             const SizedBox(height: 8),
-            SegmentedButton<LoadType>(
+            SegmentedButton<_LoadChoice>(
               segments: [
                 ButtonSegment(
-                  value: LoadType.weight,
+                  value: _LoadChoice.lb,
                   icon: const Icon(Icons.scale_outlined),
-                  label: Text(l10n.loadTypeWeight),
+                  label: Text(l10n.settingsWeightUnitLb),
                 ),
                 ButtonSegment(
-                  value: LoadType.discs,
+                  value: _LoadChoice.kg,
+                  icon: const Icon(Icons.scale_outlined),
+                  label: Text(l10n.settingsWeightUnitKg),
+                ),
+                ButtonSegment(
+                  value: _LoadChoice.discs,
                   icon: const Icon(Icons.view_agenda_outlined),
                   label: Text(l10n.loadTypeDiscs),
                 ),
               ],
-              selected: {_loadType},
+              selected: {
+                _loadType == LoadType.discs
+                    ? _LoadChoice.discs
+                    : _weightUnit == WeightUnit.kg
+                    ? _LoadChoice.kg
+                    : _LoadChoice.lb,
+              },
               onSelectionChanged: (s) => setState(() {
-                _loadType = s.first;
                 _loadTypeTouched = true;
+                switch (s.first) {
+                  case _LoadChoice.lb:
+                    _loadType = LoadType.weight;
+                    _weightUnit = WeightUnit.lb;
+                  case _LoadChoice.kg:
+                    _loadType = LoadType.weight;
+                    _weightUnit = WeightUnit.kg;
+                  case _LoadChoice.discs:
+                    _loadType = LoadType.discs;
+                }
               }),
             ),
             const SizedBox(height: 4),
@@ -329,6 +353,8 @@ class _ExerciseEditorPageState extends State<ExerciseEditorPage> {
     );
   }
 }
+
+enum _LoadChoice { lb, kg, discs }
 
 class _AddImageButton extends StatelessWidget {
   const _AddImageButton({
