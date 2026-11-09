@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../core/logger/app_logger.dart';
-import '../../../../core/units/app_weight_unit_controller.dart';
 import '../../domain/entities/equipment.dart';
 import '../../domain/entities/exercise_entity.dart';
 import '../../domain/entities/load_type.dart';
@@ -66,7 +65,6 @@ class ExercisesCubit extends Cubit<ExercisesState> {
     required List<MuscleGroup> secondaryMuscles,
     required Equipment equipment,
     required LoadType loadType,
-    required WeightUnit weightUnit,
     String? notes,
     required List<String> imagePaths,
   }) async {
@@ -82,7 +80,6 @@ class ExercisesCubit extends Cubit<ExercisesState> {
           .toList(),
       equipment: equipment,
       loadType: loadType,
-      weightUnit: weightUnit,
       notes: (notes?.trim().isEmpty ?? true) ? null : notes!.trim(),
       imagePaths: imagePaths,
       createdAt: existing?.createdAt ?? now,
