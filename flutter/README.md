@@ -2,7 +2,7 @@
 
 Plan your training week, log every workout against that plan, and see your progress.
 
-Flutter **3.47.2** (see [`.tool-versions`](.tool-versions)). Android/iOS package: `io.github.danny270793.gym_tracker`.
+Flutter **3.47.2** (see [`.tool-versions`](.tool-versions)). Android application ID: `io.github.danny270793.gymtracker`. iOS bundle ID: `io.github.danny270793.gymTracker`.
 
 ## Quick start
 
