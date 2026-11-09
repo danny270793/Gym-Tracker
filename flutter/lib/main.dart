@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -44,6 +45,14 @@ Future<void> _trustDevProxyCertificateIfNeeded() async {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Only Android has a Firebase config (android/app/google-services.json);
+  // add ios/Runner/GoogleService-Info.plist before enabling it on iOS.
+  if (defaultTargetPlatform == TargetPlatform.android) {
+    AppLogger.info('initializing Firebase');
+    await Firebase.initializeApp();
+    AppLogger.info('Firebase initialized');
+  }
   await _trustDevProxyCertificateIfNeeded();
 
   // Supabase is used for sign-in only. Gym data lives on the device for now
