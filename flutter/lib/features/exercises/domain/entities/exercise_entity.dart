@@ -1,7 +1,5 @@
 import 'package:equatable/equatable.dart';
 
-import '../../../../core/units/app_weight_unit_controller.dart';
-
 import 'equipment.dart';
 import 'load_type.dart';
 import 'muscle_group.dart';
@@ -21,10 +19,6 @@ class ExerciseEntity extends Equatable {
 
   /// Pounds or stack discs. Defaults from [equipment] (cable/machine: discs).
   final LoadType loadType;
-
-  /// Unit this exercise is logged and shown in when [loadType] is weight.
-  /// Loads are still stored in pounds. Defaults to lb.
-  final WeightUnit weightUnit;
   final String? notes;
 
   /// Object paths in the `gym-exercise-images` Storage bucket
@@ -40,7 +34,6 @@ class ExerciseEntity extends Equatable {
     this.secondaryMuscles = const [],
     this.equipment = Equipment.other,
     this.loadType = LoadType.weight,
-    this.weightUnit = WeightUnit.lb,
     this.notes,
     this.imagePaths = const [],
     required this.createdAt,
@@ -53,7 +46,6 @@ class ExerciseEntity extends Equatable {
     List<MuscleGroup>? secondaryMuscles,
     Equipment? equipment,
     LoadType? loadType,
-    WeightUnit? weightUnit,
     String? Function()? notes,
     List<String>? imagePaths,
     DateTime? updatedAt,
@@ -64,7 +56,6 @@ class ExerciseEntity extends Equatable {
     secondaryMuscles: secondaryMuscles ?? this.secondaryMuscles,
     equipment: equipment ?? this.equipment,
     loadType: loadType ?? this.loadType,
-    weightUnit: weightUnit ?? this.weightUnit,
     notes: notes != null ? notes() : this.notes,
     imagePaths: imagePaths ?? this.imagePaths,
     createdAt: createdAt,
@@ -82,7 +73,6 @@ class ExerciseEntity extends Equatable {
       loadType:
           LoadType.fromStorage(json['loadType']) ??
           LoadType.defaultFor(equipment),
-      weightUnit: WeightUnit.fromStorage(json['weightUnit'] as String?),
       notes: json['notes'] as String?,
       imagePaths:
           ((json['imagePaths'] ?? json['imageNames']) as List?)
@@ -105,7 +95,6 @@ class ExerciseEntity extends Equatable {
     'secondaryMuscles': [for (final m in secondaryMuscles) m.name],
     'equipment': equipment.name,
     'loadType': loadType.name,
-    'weightUnit': weightUnit.storageValue,
     'notes': notes,
     'imagePaths': imagePaths,
     'createdAt': createdAt.toUtc().toIso8601String(),
@@ -125,7 +114,6 @@ class ExerciseEntity extends Equatable {
     secondaryMuscles,
     equipment,
     loadType,
-    weightUnit,
     notes,
     imagePaths,
     createdAt,
