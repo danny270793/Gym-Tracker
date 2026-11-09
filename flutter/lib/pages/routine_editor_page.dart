@@ -4,12 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gym_tracker/l10n/app_localizations.dart';
 
+import '../features/exercises/domain/entities/exercise_entity.dart';
 import '../features/exercises/presentation/cubit/exercises_cubit.dart';
 import '../features/plan/domain/entities/routine_entity.dart';
 import '../features/plan/presentation/cubit/plan_cubit.dart';
 import '../widgets/confirm_dialog.dart';
 import '../widgets/exercise_picker_sheet.dart';
 import '../widgets/exercise_thumbnail.dart';
+import '../widgets/gym_labels.dart';
 import '../widgets/load_display.dart';
 import '../widgets/section_header.dart';
 import 'workouts_page.dart';
@@ -190,9 +192,7 @@ class _RoutineEditorPageState extends State<RoutineEditorPage> {
                     key: ValueKey(_keys[i]),
                     index: i,
                     item: _items[i],
-                    name:
-                        exercises.byId(_items[i].exerciseId)?.name ??
-                        l10n.deletedExercise,
+                    exercise: exercises.byId(_items[i].exerciseId),
                     thumbnail: ExerciseThumbnail.orNull(
                       exercises.byId(_items[i].exerciseId),
                       size: 40,
@@ -221,7 +221,7 @@ class _PlannedRow extends StatelessWidget {
     super.key,
     required this.index,
     required this.item,
-    required this.name,
+    required this.exercise,
     required this.thumbnail,
     required this.load,
     required this.onChanged,
@@ -230,7 +230,7 @@ class _PlannedRow extends StatelessWidget {
 
   final int index;
   final PlannedExercise item;
-  final String name;
+  final ExerciseEntity? exercise;
   final Widget? thumbnail;
   final LoadDisplay load;
   final ValueChanged<PlannedExercise> onChanged;
@@ -260,13 +260,37 @@ class _PlannedRow extends StatelessWidget {
                   const SizedBox(width: 12),
                 ],
                 Expanded(
-                  child: Text(
-                    name,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w600,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(8),
+                    onTap: exercise == null
+                        ? null
+                        : () => context.push('/exercise/${exercise!.id}'),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          exercise?.name ?? l10n.deletedExercise,
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        if (exercise != null)
+                          Text(
+                            equipmentLabel(l10n, exercise!.equipment),
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: theme.colorScheme.onSurfaceVariant,
+                            ),
+                          ),
+                      ],
                     ),
                   ),
                 ),
+                if (exercise != null)
+                  IconButton(
+                    tooltip: l10n.openExercise,
+                    icon: const Icon(Icons.info_outline),
+                    onPressed: () => context.push('/exercise/${exercise!.id}'),
+                  ),
                 IconButton(
                   tooltip: l10n.removeExercise,
                   icon: const Icon(Icons.close),
