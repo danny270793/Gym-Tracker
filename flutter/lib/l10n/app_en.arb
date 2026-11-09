@@ -376,9 +376,9 @@
   "settingsThemeDark": "Dark",
   "settingsThemeLight": "Light",
   "settingsThemeSystem": "System default",
-  "settingsWeightUnit": "Weight unit",
-  "settingsWeightUnitKg": "Kilograms (kg)",
-  "settingsWeightUnitLb": "Pounds (lb)",
+  "settingsWeightUnit": "Unit for totals",
+  "settingsWeightUnitKg": "kg",
+  "settingsWeightUnitLb": "lb",
   "signIn": "Sign in",
   "signOut": "Sign out",
   "startWorkout": "Start workout",
@@ -410,10 +410,13 @@
   "loadTypeLabel": "Load",
   "loadTypeWeight": "Weight",
   "loadTypeDiscs": "Discs",
-  "loadTypeWeightHint": "Sets are logged in lb or kg and count toward weekly volume.",
+  "loadTypeWeightHint": "Sets are logged in this unit and count toward weekly volume.",
   "loadTypeDiscsHint": "For cable and machine stacks: log how many discs (plates). Not counted in lb/kg volume.",
   "dashboardVolumeHint": "Volume counts weight exercises only; disc exercises are tracked in their own progress.",
   "saveFailed": "Couldn't save. Check your connection and try again.",
   "offlineBanner": "Offline: showing your last synced data (read-only)",
-  "syncingLocalData": "Uploading your data to your account…"
+  "syncingLocalData": "Uploading your data to your account…",
+  "dashboardMuscleReps": "Reps per main muscle this week",
+  "dashboardMuscleRepsHint": "Completed reps of the exercises that train each muscle directly.",
+  "openExercise": "Open exercise"
 }
