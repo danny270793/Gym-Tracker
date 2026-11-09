@@ -12,6 +12,7 @@ import '../widgets/confirm_dialog.dart';
 import '../widgets/exercise_picker_sheet.dart';
 import '../widgets/exercise_thumbnail.dart';
 import '../widgets/gym_labels.dart';
+import '../widgets/lb_kg_fields.dart';
 import '../widgets/load_display.dart';
 import '../widgets/section_header.dart';
 import 'workouts_page.dart';
@@ -319,41 +320,58 @@ class _PlannedRow extends StatelessWidget {
                       onChanged: (v) => onChanged(item.copyWith(reps: v)),
                     ),
                   ),
-                  const SizedBox(width: 8),
-                  SizedBox(
-                    width: 84,
-                    child: TextFormField(
-                      key: ValueKey('w-${load.symbol}'),
-                      initialValue: item.load == null
-                          ? ''
-                          : load.format(item.load!),
-                      textAlign: TextAlign.center,
-                      keyboardType: const TextInputType.numberWithOptions(
-                        decimal: true,
+                  if (load.isDiscs) ...[
+                    const SizedBox(width: 8),
+                    SizedBox(
+                      width: 84,
+                      child: TextFormField(
+                        key: ValueKey('w-${load.symbol}'),
+                        initialValue: item.load == null
+                            ? ''
+                            : load.format(item.load!),
+                        textAlign: TextAlign.center,
+                        keyboardType: const TextInputType.numberWithOptions(
+                          decimal: true,
+                        ),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp(r'[0-9.,]')),
+                        ],
+                        decoration: InputDecoration(
+                          isDense: true,
+                          labelText: load.symbol,
+                          border: const OutlineInputBorder(),
+                        ),
+                        onChanged: (v) {
+                          final parsed = double.tryParse(
+                            v.replaceAll(',', '.'),
+                          );
+                          onChanged(
+                            item.copyWith(
+                              load: () => parsed == null || parsed <= 0
+                                  ? null
+                                  : load.fromInput(parsed),
+                            ),
+                          );
+                        },
                       ),
-                      inputFormatters: [
-                        FilteringTextInputFormatter.allow(RegExp(r'[0-9.,]')),
-                      ],
-                      decoration: InputDecoration(
-                        isDense: true,
-                        labelText: load.symbol,
-                        border: const OutlineInputBorder(),
-                      ),
-                      onChanged: (v) {
-                        final parsed = double.tryParse(v.replaceAll(',', '.'));
-                        onChanged(
-                          item.copyWith(
-                            load: () => parsed == null || parsed <= 0
-                                ? null
-                                : load.fromInput(parsed),
-                          ),
-                        );
-                      },
                     ),
-                  ),
+                  ],
                 ],
               ),
             ),
+            if (!load.isDiscs)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
+                child: LbKgFields(
+                  valueLb: item.load,
+                  decoration: (unit) => InputDecoration(
+                    isDense: true,
+                    labelText: unit,
+                    border: const OutlineInputBorder(),
+                  ),
+                  onChanged: (lb) => onChanged(item.copyWith(load: () => lb)),
+                ),
+              ),
           ],
         ),
       ),
