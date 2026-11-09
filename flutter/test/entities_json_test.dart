@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:gym_tracker/core/units/app_weight_unit_controller.dart';
 import 'package:gym_tracker/features/exercises/domain/entities/equipment.dart';
 import 'package:gym_tracker/features/exercises/domain/entities/exercise_entity.dart';
 import 'package:gym_tracker/features/exercises/domain/entities/load_type.dart';
@@ -95,5 +96,12 @@ void main() {
       'completed': true,
     });
     expect(s.load, 50);
+  });
+
+  test('weight unit defaults to lb and round-trips', () {
+    final old = ExerciseEntity.fromJson({'id': 'x', 'equipment': 'dumbbell'});
+    expect(old.weightUnit, WeightUnit.lb);
+    final kg = old.copyWith(weightUnit: WeightUnit.kg);
+    expect(ExerciseEntity.fromJson(kg.toJson()).weightUnit, WeightUnit.kg);
   });
 }
