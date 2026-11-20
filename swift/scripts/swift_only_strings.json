@@ -1,0 +1,26 @@
+{
+  "configMissingTitle": {
+    "en": "Danny Gym Tracker isn't configured",
+    "es": "Danny Gym Tracker no está configurado"
+  },
+  "configMissingBody": {
+    "en": "Copy GymConfig.example.plist to GymTracker/Resources/GymConfig.plist and fill in the Supabase URL and anon key.",
+    "es": "Copia GymConfig.example.plist a GymTracker/Resources/GymConfig.plist y completa la URL y la clave anónima de Supabase."
+  },
+  "signInFailed": {
+    "en": "Couldn't sign in. Check your email and password.",
+    "es": "No se pudo iniciar sesión. Revisa el correo y la contraseña."
+  },
+  "rateApp": {
+    "en": "Rate the app",
+    "es": "Calificar la app"
+  },
+  "seeMore": {
+    "en": "See more",
+    "es": "Ver más"
+  },
+  "setsCount": {
+    "en": "%1$@ sets",
+    "es": "%1$@ series"
+  }
+}
