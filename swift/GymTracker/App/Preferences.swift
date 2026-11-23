@@ -58,7 +58,14 @@ final class Preferences {
     didSet { defaults.set(weightUnit.rawValue, forKey: "app_weight_unit") }
   }
 
+  /// Hours of sleep that count as "reached" in the weekly health view. Device-only.
+  var sleepGoalHours: Double {
+    didSet { defaults.set(sleepGoalHours, forKey: "app_sleep_goal_hours") }
+  }
+
   init() {
+    let savedSleepGoal = UserDefaults.standard.double(forKey: "app_sleep_goal_hours")
+    sleepGoalHours = savedSleepGoal > 0 ? savedSleepGoal : HealthWeekCalculator.defaultSleepGoalHours
     language = AppLanguage(rawValue: defaults.string(forKey: "app_language_preference") ?? "") ?? .system
     theme = AppTheme(rawValue: defaults.string(forKey: "app_theme_preference") ?? "") ?? .system
     biometricUnlock = defaults.bool(forKey: "app_biometric_unlock_enabled")

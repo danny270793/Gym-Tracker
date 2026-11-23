@@ -17,10 +17,16 @@ struct DashboardView: View {
           Button(L("retry")) { Task { await model.reload() } }
         }
       } else if model.workouts.isEmpty {
-        ContentUnavailableView {
-          Label(L("dashboardEmptyTitle"), systemImage: "chart.bar.xaxis")
-        } description: {
-          Text(L("dashboardEmptyBody"))
+        List {
+          Section(L("healthThisWeek")) { HealthWeekCard() }
+          Section {
+            ContentUnavailableView {
+              Label(L("dashboardEmptyTitle"), systemImage: "chart.bar.xaxis")
+            } description: {
+              Text(L("dashboardEmptyBody"))
+            }
+          }
+          .listRowBackground(Color.clear)
         }
       } else {
         dashboard
@@ -41,6 +47,7 @@ struct DashboardView: View {
     let unit = prefs.weightUnit
     return List {
       OfflineHeader()
+      Section(L("healthThisWeek")) { HealthWeekCard() }
       Section(L("dashboardThisWeek")) {
         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
           stat(

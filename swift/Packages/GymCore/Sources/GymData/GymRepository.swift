@@ -282,6 +282,102 @@ public final class GymRepository: Sendable {
     }
   }
 
+  // MARK: Nutrition
+
+  public func nutritionProfile() async throws -> Served<NutritionProfile?> {
+    let user = try requireUser()
+    do {
+      let rows: [NutritionProfile] = try await client.from("gym_nutrition_profiles").select().execute().value
+      await cache.write(rows, user: user, name: OfflineCache.nutritionProfile)
+      return Served(value: rows.first)
+    } catch {
+      if isOfflineError(error),
+        let cached = await cache.read([NutritionProfile].self, user: user, name: OfflineCache.nutritionProfile)
+      {
+        return Served(value: cached.first, fromCache: true)
+      }
+      throw error
+    }
+  }
+
+  public func saveNutritionProfile(_ profile: NutritionProfile) async throws {
+    let user = try requireUser()
+    try await client.from("gym_nutrition_profiles").upsert(
+      UserRow(value: profile, userId: user, updatedAt: .now), onConflict: "userId"
+    ).execute()
+    await cache.write([profile], user: user, name: OfflineCache.nutritionProfile)
+  }
+
+  public func foodEntries() async throws -> Served<[FoodEntry]> {
+    let user = try requireUser()
+    do {
+      let rows: [FoodEntry] = try await client.from("gym_food_entries").select()
+        .is("deletedAt", value: nil).order("date", ascending: false).execute().value
+      await cache.write(rows, user: user, name: OfflineCache.foodEntries)
+      return Served(value: rows)
+    } catch {
+      if isOfflineError(error), let cached = await cache.read([FoodEntry].self, user: user, name: OfflineCache.foodEntries) {
+        return Served(value: cached, fromCache: true)
+      }
+      throw error
+    }
+  }
+
+  public func saveFoodEntry(_ entry: FoodEntry) async throws {
+    let user = try requireUser()
+    try await client.from("gym_food_entries").upsert(
+      UserRow(value: entry, userId: user, updatedAt: .now, clearsDeletedAt: true)
+    ).execute()
+    var list = await cache.read([FoodEntry].self, user: user, name: OfflineCache.foodEntries) ?? []
+    if let index = list.firstIndex(where: { $0.id == entry.id }) { list[index] = entry } else { list.append(entry) }
+    await cache.write(list, user: user, name: OfflineCache.foodEntries)
+  }
+
+  public func deleteFoodEntry(id: String) async throws {
+    let user = try requireUser()
+    let now = GymJSON.formatTimestamp(.now)
+    try await client.from("gym_food_entries").update(SoftDelete(deletedAt: now, updatedAt: now)).eq("id", value: id)
+      .execute()
+    var list = await cache.read([FoodEntry].self, user: user, name: OfflineCache.foodEntries) ?? []
+    list.removeAll { $0.id == id }
+    await cache.write(list, user: user, name: OfflineCache.foodEntries)
+  }
+
+  // MARK: Sleep
+
+  public func sleepEntries() async throws -> Served<[SleepEntry]> {
+    let user = try requireUser()
+    do {
+      let rows: [SleepEntry] = try await client.from("gym_sleep_entries").select()
+        .is("deletedAt", value: nil).order("endAt", ascending: false).execute().value
+      await cache.write(rows, user: user, name: OfflineCache.sleepEntries)
+      return Served(value: rows)
+    } catch {
+      if isOfflineError(error), let cached = await cache.read([SleepEntry].self, user: user, name: OfflineCache.sleepEntries) {
+        return Served(value: cached, fromCache: true)
+      }
+      throw error
+    }
+  }
+
+  public func saveSleepEntry(_ entry: SleepEntry) async throws {
+    let user = try requireUser()
+    try await client.from("gym_sleep_entries").upsert(SleepWrite(entry: entry, userId: user)).execute()
+    var list = await cache.read([SleepEntry].self, user: user, name: OfflineCache.sleepEntries) ?? []
+    if let index = list.firstIndex(where: { $0.id == entry.id }) { list[index] = entry } else { list.append(entry) }
+    await cache.write(list, user: user, name: OfflineCache.sleepEntries)
+  }
+
+  public func deleteSleepEntry(id: String) async throws {
+    let user = try requireUser()
+    let now = GymJSON.formatTimestamp(.now)
+    try await client.from("gym_sleep_entries").update(SoftDelete(deletedAt: now, updatedAt: now)).eq("id", value: id)
+      .execute()
+    var list = await cache.read([SleepEntry].self, user: user, name: OfflineCache.sleepEntries) ?? []
+    list.removeAll { $0.id == id }
+    await cache.write(list, user: user, name: OfflineCache.sleepEntries)
+  }
+
   // MARK: Legacy device-only data
 
   public func hasLegacyData() async -> Bool {
@@ -423,6 +519,61 @@ private struct ExerciseWrite: Encodable {
 private struct SoftDelete: Encodable {
   var deletedAt: String
   var updatedAt: String
+}
+
+/// A value written together with the owner id and timestamps (and, for soft-deleted tables, a cleared `deletedAt`).
+private struct UserRow<Value: Encodable>: Encodable {
+  var value: Value
+  var userId: String
+  var updatedAt: Date
+  var clearsDeletedAt = false
+
+  private struct Key: CodingKey {
+    var stringValue: String
+    var intValue: Int? { nil }
+    init(_ name: String) { stringValue = name }
+    init?(stringValue: String) { self.stringValue = stringValue }
+    init?(intValue: Int) { nil }
+  }
+
+  func encode(to encoder: Encoder) throws {
+    try value.encode(to: encoder)
+    var c = encoder.container(keyedBy: Key.self)
+    try c.encode(userId, forKey: Key("userId"))
+    try c.encode(updatedAt, forKey: Key("updatedAt"))
+    if clearsDeletedAt { try c.encodeNil(forKey: Key("deletedAt")) }
+  }
+}
+
+/// Explicit nulls so turning a night into a nap clears the night-only columns.
+private struct SleepWrite: Encodable {
+  var entry: SleepEntry
+  var userId: String
+
+  enum CodingKeys: String, CodingKey {
+    case id, userId, startAt, endAt, isNap, deepPercent, remPercent, awakenings, awakeMinutes
+    case updatedAt, deletedAt
+  }
+
+  init(entry: SleepEntry, userId: String) {
+    self.entry = entry
+    self.userId = userId
+  }
+
+  func encode(to encoder: Encoder) throws {
+    var c = encoder.container(keyedBy: CodingKeys.self)
+    try c.encode(entry.id, forKey: .id)
+    try c.encode(userId, forKey: .userId)
+    try c.encode(entry.start, forKey: .startAt)
+    try c.encode(entry.end, forKey: .endAt)
+    try c.encode(entry.isNap, forKey: .isNap)
+    try c.encodeNullIfNil(entry.deepPercent, forKey: .deepPercent)
+    try c.encodeNullIfNil(entry.remPercent, forKey: .remPercent)
+    if let awakenings = entry.awakenings { try c.encode(awakenings, forKey: .awakenings) } else { try c.encodeNil(forKey: .awakenings) }
+    if let minutes = entry.awakeMinutes { try c.encode(minutes, forKey: .awakeMinutes) } else { try c.encodeNil(forKey: .awakeMinutes) }
+    try c.encode(Date.now, forKey: .updatedAt)
+    try c.encodeNil(forKey: .deletedAt)
+  }
 }
 
 private struct PlanDayRow: Decodable {

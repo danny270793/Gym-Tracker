@@ -5,6 +5,7 @@ Weekly gym plan, daily workout log and progress dashboard, backed by Supabase (a
 | Folder | App |
 |---|---|
 | [`flutter/`](flutter) | Flutter app (Android, iOS). See [flutter/README.md](flutter/README.md). |
+| [`swift/`](swift) | Native SwiftUI port for iOS 26 with the Liquid Glass design. See [swift/README.md](swift/README.md). |
 
 ## Agents
 
