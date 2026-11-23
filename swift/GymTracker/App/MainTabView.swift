@@ -17,6 +17,9 @@ struct MainTabView: View {
       Tab(L("navExercises"), systemImage: "dumbbell") {
         NavigationStack { ExercisesView() }
       }
+      Tab(L("navHealth"), systemImage: "heart.text.square") {
+        NavigationStack { HealthView() }
+      }
     }
     .tabBarMinimizeBehavior(.onScrollDown)
     .tabViewStyle(.sidebarAdaptable)

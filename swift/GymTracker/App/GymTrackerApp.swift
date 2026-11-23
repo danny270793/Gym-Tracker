@@ -4,12 +4,16 @@ import SwiftUI
 struct GymTrackerApp: App {
   @State private var model = AppModel()
   @State private var prefs = Preferences()
+  @State private var nutrition = NutritionStore()
+  @State private var sleep = SleepStore()
 
   var body: some Scene {
     WindowGroup {
       RootView()
         .environment(model)
         .environment(prefs)
+        .environment(nutrition)
+        .environment(sleep)
         .environment(\.locale, L10n.locale)
         .preferredColorScheme(prefs.theme.colorScheme)
         .id(prefs.language)
