@@ -89,6 +89,13 @@ public struct NutritionTargets: Sendable, Equatable {
   public var calories: Int
   /// Daily protein, grams.
   public var proteinGrams: Int
+
+  public init(bmr: Int, maintenance: Int, calories: Int, proteinGrams: Int) {
+    self.bmr = bmr
+    self.maintenance = maintenance
+    self.calories = calories
+    self.proteinGrams = proteinGrams
+  }
 }
 
 public enum NutritionCalculator {
