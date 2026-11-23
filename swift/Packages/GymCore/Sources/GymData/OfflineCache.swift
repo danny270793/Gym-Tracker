@@ -69,6 +69,9 @@ public actor OfflineCache {
   public static let routines = "cache_routines"
   public static let weeklyPlan = "cache_weekly_plan"
   public static let workouts = "cache_workouts"
+  public static let nutritionProfile = "cache_nutrition_profile"
+  public static let foodEntries = "cache_food_entries"
+  public static let sleepEntries = "cache_sleep_entries"
   public static let version = 1
 
   private let root: URL
